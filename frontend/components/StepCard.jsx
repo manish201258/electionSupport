@@ -1,6 +1,8 @@
+import React from 'react';
+
 export default function StepCard({ step, current, total }) {
   return (
-    <article className="stepCard">
+    <article className="stepCard" aria-live="polite">
       <p className="stepCount">
         Step {current} of {total}
       </p>

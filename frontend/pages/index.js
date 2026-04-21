@@ -1,8 +1,9 @@
+import React from 'react';
 import Link from 'next/link';
 
 export default function HomePage() {
   return (
-    <main className="heroLayout">
+    <main id="main-content" className="heroLayout" role="main">
       <section className="heroBlock">
         <p className="eyebrow">Election Literacy Hub</p>
         <h1>Learn the full election process without confusion</h1>

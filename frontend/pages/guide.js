@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import StepCard from '../components/StepCard';
@@ -18,7 +19,7 @@ export default function GuidePage() {
   const isLast = index === Math.max(steps.length - 1, 0);
 
   return (
-    <main className="pageLayout">
+    <main id="main-content" className="pageLayout" role="main">
       <header className="pageHeader">
         <Link href="/" className="ghostBtn">
           Back Home
@@ -32,15 +33,24 @@ export default function GuidePage() {
           <>
             <StepCard step={currentStep} current={index + 1} total={steps.length} />
             <div className="guideActions">
-              <button disabled={isFirst} onClick={() => setIndex((i) => Math.max(i - 1, 0))}>
+              <button
+                type="button"
+                disabled={isFirst}
+                onClick={() => setIndex((i) => Math.max(i - 1, 0))}
+              >
                 Previous
               </button>
               {!isLast ? (
-                <button onClick={() => setIndex((i) => Math.min(i + 1, steps.length - 1))}>
+                <button
+                  type="button"
+                  onClick={() => setIndex((i) => Math.min(i + 1, steps.length - 1))}
+                >
                   Next
                 </button>
               ) : (
-                <button onClick={() => setIndex(0)}>Restart</button>
+                <button type="button" onClick={() => setIndex(0)}>
+                  Restart
+                </button>
               )}
             </div>
           </>

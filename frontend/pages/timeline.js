@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import TimelineCard from '../components/TimelineCard';
@@ -16,7 +17,7 @@ export default function TimelinePage() {
   }, [region]);
 
   return (
-    <main className="pageLayout">
+    <main id="main-content" className="pageLayout" role="main">
       <header className="pageHeader">
         <Link href="/" className="ghostBtn">
           Back Home

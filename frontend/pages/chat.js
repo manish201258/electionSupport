@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import ChatBox from '../components/ChatBox';
@@ -16,7 +17,7 @@ export default function ChatPage() {
   }, []);
 
   return (
-    <main className="pageLayout">
+    <main id="main-content" className="pageLayout" role="main">
       <header className="pageHeader">
         <Link href="/" className="ghostBtn">
           Back Home
@@ -27,13 +28,21 @@ export default function ChatPage() {
 
       <section className="panel regionSelectWrap">
         <label htmlFor="region">Select region</label>
-        <select id="region" value={region} onChange={(e) => setRegion(e.target.value)}>
+        <select
+          id="region"
+          value={region}
+          onChange={(e) => setRegion(e.target.value)}
+          aria-describedby="region-help"
+        >
           {regions.map((option) => (
             <option key={option} value={option}>
               {option}
             </option>
           ))}
         </select>
+        <p id="region-help" className="srOnly">
+          Selected region is used to tailor assistant and timeline guidance.
+        </p>
       </section>
 
       <ChatBox region={region} />

@@ -62,6 +62,16 @@ project/
 - Optional CORS allowlist using ALLOWED_ORIGINS
 - Environment variable configuration
 
+7. Accessibility and UX
+- Skip-to-content navigation support
+- Proper form labels and ARIA landmarks
+- Keyboard focus-visible styles
+- Reduced motion support for users with motion sensitivity
+
+8. Google Services Integration
+- Firebase Analytics integration for app events
+- Tracks events such as app open and assistant usage
+
 ## Setup Instructions
 
 ## 1) Backend Setup
@@ -92,6 +102,13 @@ Frontend runs on http://localhost:3000
 
 2. Set frontend env vars on your hosting provider:
 - NEXT_PUBLIC_API_BASE_URL
+- NEXT_PUBLIC_FIREBASE_API_KEY
+- NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+- NEXT_PUBLIC_FIREBASE_PROJECT_ID
+- NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+- NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+- NEXT_PUBLIC_FIREBASE_APP_ID
+- NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
 
 3. Rotate any key that was ever pasted in chat, screenshots, or public channels.
 
@@ -132,6 +149,13 @@ cd backend
 npm test
 
 Covers health, timeline, and chat validation/response behavior.
+
+Frontend tests use Vitest + Testing Library:
+
+cd frontend
+npm test
+
+Covers chat interactions and API caching behavior.
 
 ## Deployment
 

@@ -1,4 +1,5 @@
 const express = require('express');
+const compression = require('compression');
 const cors = require('cors');
 const rateLimit = require('express-rate-limit');
 const helmet = require('helmet');
@@ -10,6 +11,7 @@ const chatRoutes = require('./routes/chatRoutes');
 const app = express();
 
 app.disable('x-powered-by');
+app.use(compression());
 app.use(
   helmet({
     contentSecurityPolicy: false,
@@ -59,9 +61,18 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok', service: 'election-edu-backend' });
 });
 
-app.use('/api/timeline', timelineRoutes);
-app.use('/api/faq', faqRoutes);
-app.use('/api/steps', stepsRoutes);
+function cacheFor(seconds) {
+  return (req, res, next) => {
+    if (req.method === 'GET') {
+      res.set('Cache-Control', `public, max-age=${seconds}`);
+    }
+    next();
+  };
+}
+
+app.use('/api/timeline', cacheFor(300), timelineRoutes);
+app.use('/api/faq', cacheFor(600), faqRoutes);
+app.use('/api/steps', cacheFor(600), stepsRoutes);
 app.use('/api/chat', chatRoutes);
 
 app.use((err, req, res, next) => {
