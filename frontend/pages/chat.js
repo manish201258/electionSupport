@@ -3,15 +3,8 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import ChatBox from '../components/ChatBox';
 import { fetchFaq } from '../utils/api';
-import { logEvent } from '../utils/firebase';
 
 const regions = ['national', 'rajasthan', 'maharashtra', 'karnataka'];
-const regionLabels = {
-  national: 'National',
-  rajasthan: 'Rajasthan',
-  maharashtra: 'Maharashtra',
-  karnataka: 'Karnataka',
-};
 
 export default function ChatPage() {
   const [region, setRegion] = useState('national');
@@ -22,10 +15,6 @@ export default function ChatPage() {
       .then((res) => setFaq(res.items || []))
       .catch(() => setFaq([]));
   }, []);
-
-  useEffect(() => {
-    logEvent('chat_page_view', { region });
-  }, [region]);
 
   return (
     <main id="main-content" className="pageLayout" role="main">
@@ -47,7 +36,7 @@ export default function ChatPage() {
         >
           {regions.map((option) => (
             <option key={option} value={option}>
-              {regionLabels[option]}
+              {option}
             </option>
           ))}
         </select>

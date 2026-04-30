@@ -88,8 +88,7 @@ function trustedDirectAnswer(userMessage) {
   return null;
 }
 
-async function callAiAssistant(userMessage, region = 'national') {
-  const safeRegion = typeof region === 'string' && region ? region : 'national';
+async function callAiAssistant(userMessage) {
   const direct = trustedDirectAnswer(userMessage);
   if (direct) {
     return direct;
@@ -115,10 +114,7 @@ async function callAiAssistant(userMessage, region = 'national') {
         model,
         messages: [
           { role: 'system', content: buildSystemPrompt() },
-          {
-            role: 'user',
-            content: [`User region: ${safeRegion}`, `Question: ${userMessage}`].join('\n'),
-          },
+          { role: 'user', content: userMessage },
         ],
         temperature: 0.2,
       }),

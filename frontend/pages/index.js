@@ -1,14 +1,7 @@
 import React from 'react';
-import { useEffect } from 'react';
 import Link from 'next/link';
-import { logEvent } from '../utils/firebase';
-import GoogleServicesPanel from '../components/GoogleServicesPanel';
 
 export default function HomePage() {
-  useEffect(() => {
-    logEvent('home_page_view', { source: 'web' });
-  }, []);
-
   return (
     <main id="main-content" className="heroLayout" role="main">
       <section className="heroBlock">
@@ -42,8 +35,6 @@ export default function HomePage() {
           <p>Select your state for localized awareness updates.</p>
         </article>
       </section>
-
-      <GoogleServicesPanel pageName="home" region="national" />
     </main>
   );
 }

@@ -7,14 +7,16 @@ const timelineRoutes = require('./routes/timelineRoutes');
 const faqRoutes = require('./routes/faqRoutes');
 const stepsRoutes = require('./routes/stepsRoutes');
 const chatRoutes = require('./routes/chatRoutes');
-const announcementsRoutes = require('./routes/announcementsRoutes');
-const feedbackRoutes = require('./routes/feedbackRoutes');
 
 const app = express();
 
 app.disable('x-powered-by');
 app.use(compression());
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+);
 
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || '')
   .split(',')
@@ -69,11 +71,9 @@ function cacheFor(seconds) {
 }
 
 app.use('/api/timeline', cacheFor(300), timelineRoutes);
-app.use('/api/announcements', cacheFor(300), announcementsRoutes);
 app.use('/api/faq', cacheFor(600), faqRoutes);
 app.use('/api/steps', cacheFor(600), stepsRoutes);
 app.use('/api/chat', chatRoutes);
-app.use('/api/feedback', feedbackRoutes);
 
 app.use((err, req, res, next) => {
   if (err && err.isJoi) {

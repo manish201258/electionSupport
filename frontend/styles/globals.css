@@ -273,61 +273,6 @@ input {
   gap: 10px;
 }
 
-.servicePanel {
-  margin-top: 16px;
-}
-
-.serviceSubtext {
-  color: var(--muted);
-  margin-top: 6px;
-}
-
-.serviceGrid {
-  margin-top: 14px;
-  display: grid;
-  gap: 12px;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-}
-
-.serviceCard {
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 14px;
-  background: rgba(255, 255, 255, 0.58);
-}
-
-.serviceList {
-  margin: 0;
-  padding-left: 18px;
-  display: grid;
-  gap: 8px;
-}
-
-.serviceList p {
-  margin: 6px 0;
-}
-
-.serviceForm {
-  display: grid;
-  gap: 8px;
-}
-
-.serviceForm textarea {
-  width: 100%;
-  border: 1px solid #bbb3a7;
-  border-radius: 10px;
-  padding: 11px;
-  font-size: 15px;
-  background: #fffdf7;
-  resize: vertical;
-  min-height: 100px;
-}
-
-.serviceStatus {
-  margin-top: 10px;
-  color: var(--muted);
-}
-
 .srOnly {
   position: absolute;
   width: 1px;

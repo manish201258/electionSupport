@@ -1,61 +1,23 @@
 # Node modules
 **/node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-
-# Environment files (NEVER COMMIT)
-.env
-.env.local
-.env.*.local
-
-# Build outputs
-frontend/.next/
-frontend/out/
-frontend/dist/
-backend/coverage/
-backend/build/
-dist/
-
-# Local editor history
-.history/
-.vscode-test/
-
-# IDE & Editor
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-.DS_Store
-Thumbs.db
-
-# Cache
-.eslintcache
-.cache/
-
-# Testing
-.nyc_output/
-coverage/
-
-# Vercel/Next.js
-.vercel/
-
-# OS specific
-.directory
-
-# Lock files (keep these for reproducibility)
-# package-lock.json
-# yarn.lock
-# pnpm-lock.yaml
 
 # Logs
-logs/
 *.log
-lerna-debug.log*
+npm-debug.log*
 
-# Temporary
-*.tmp
-*.temp
-.turbo/
+# Environment files
+**/.env
+**/.env.local
+
+# Build output
+frontend/.next/
+frontend/out/
+backend/coverage/
+
+# Local editor history snapshots
+.history/
+
+# OS and editor
+.DS_Store
+Thumbs.db
+.vscode/

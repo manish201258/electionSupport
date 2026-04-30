@@ -57,25 +57,6 @@ export async function fetchSteps() {
   });
 }
 
-export async function fetchAnnouncements(region = 'national') {
-  const key = `announcements:${region}`;
-  return withCache(key, async () => {
-    const response = await fetch(
-      `${API_BASE_URL}/api/announcements?region=${encodeURIComponent(region)}`
-    );
-    return parseJson(response);
-  });
-}
-
-export async function submitFeedback(payload) {
-  const response = await fetch(`${API_BASE_URL}/api/feedback`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload),
-  });
-  return parseJson(response);
-}
-
 export async function askAssistant(message, region = '') {
   const response = await fetch(`${API_BASE_URL}/api/chat`, {
     method: 'POST',

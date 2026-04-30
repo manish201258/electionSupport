@@ -71,8 +71,6 @@ project/
 8. Google Services Integration
 - Firebase Analytics integration for app events
 - Tracks events such as app open and assistant usage
-- Firestore integration for community announcements
-- Firestore-backed learner feedback capture
 
 ## Setup Instructions
 
@@ -111,8 +109,6 @@ Frontend runs on http://localhost:3000
 - NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
 - NEXT_PUBLIC_FIREBASE_APP_ID
 - NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
-- NEXT_PUBLIC_FIREBASE_FEEDBACK_COLLECTION (optional)
-- NEXT_PUBLIC_FIREBASE_ANNOUNCEMENTS_COLLECTION (optional)
 
 3. Rotate any key that was ever pasted in chat, screenshots, or public channels.
 

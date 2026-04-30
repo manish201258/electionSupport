@@ -3,7 +3,6 @@ import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import StepCard from '../components/StepCard';
 import { fetchSteps } from '../utils/api';
-import { logEvent } from '../utils/firebase';
 
 export default function GuidePage() {
   const [steps, setSteps] = useState([]);
@@ -14,10 +13,6 @@ export default function GuidePage() {
       .then((res) => setSteps(res.items || []))
       .catch(() => setSteps([]));
   }, []);
-
-  useEffect(() => {
-    logEvent('guide_page_view', { step: index + 1 });
-  }, [index]);
 
   const currentStep = useMemo(() => steps[index], [steps, index]);
   const isFirst = index === 0;
